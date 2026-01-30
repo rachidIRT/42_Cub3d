@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: roubelka <roubelka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/29 18:29:48 by roubelka          #+#    #+#             */
-/*   Updated: 2025/12/09 01:00:13 by roubelka         ###   ########.fr       */
+/*   Created: 2025/12/17 15:25:06 by roubelka          #+#    #+#             */
+/*   Updated: 2025/12/17 15:25:07 by roubelka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,36 @@
 # include <stdio.h>      
 # include <stdbool.h>    
 # include <math.h>       // cos(), sin()
-#include "../libft/libft.h"
-#include "../get_next_line/get_next_line.h"
+# include "../mlx/mlx.h"
+# include "../libft/libft.h"
+# include "../get_next_line/get_next_line.h"
 
 // STRUCTURES
 
+// Store a single texture image
+typedef struct s_img
+{
+    void    *img;       // mlx image pointer
+    char    *addr;      // image data address
+    int     width;
+    int     height;
+    int     bpp;        // bits per pixel
+    int     line_len;   // line length
+    int     endian;
+}   t_img;
 
-// Store texture paths
+
+// Store texture paths and loaded images
 typedef struct s_textures
 {
     char    *north;
     char    *south;
     char    *east;
     char    *west;
+    t_img   north_img;
+    t_img   south_img;
+    t_img   east_img;
+    t_img   west_img;
 }   t_textures;
 
 // Store colors
@@ -67,6 +84,8 @@ typedef struct s_map_line
 // Main data structure
 typedef struct s_data
 {
+    void        *mlx;        // mlx connection
+    void        *win;        // mlx window (optional, for rendering)
     t_textures  textures;
     t_colors    colors;
     t_player    player;
@@ -138,5 +157,10 @@ int         ft_isspace(char c);
 char        *skip_spaces(char *str);
 char        *trim_line(char *line);
 int         is_empty_line(char *line);
+
+// textures/load_textures.c
+int         load_textures(t_data *data);
+int         load_single_texture(t_data *data, char *path, t_img *img);
+void        free_textures(t_data *data);
 
 #endif

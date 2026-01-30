@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: roubelka <roubelka@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/06 21:57:54 by roubelka          #+#    #+#             */
-/*   Updated: 2025/12/09 00:17:56 by roubelka         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "../../include/header.h"
 
@@ -61,9 +51,15 @@ int find_player(t_data *data)
     }
     
     if (player_count == 0)
-        printf("No player found in map");
+    {
+        printf("Error\nNo player found in map\n");
+        return (0);
+    }
     if (player_count > 1)
-        printf("Multiple players found in map");
+    {
+        printf("Error\nMultiple players found in map\n");
+        return (0);
+    }
     
     return (1);
 }
@@ -83,13 +79,19 @@ int validate_map(t_data *data)
         {
             c = data->map.grid[i][j];
             if (!is_valid_map_char(c))
-                printf("Invalid character in map");
+            {
+                printf("Error\nInvalid character in map\n");
+                return (0);
+            }
             
             // Check if walkable spaces are surrounded by walls
             if (is_walkable(c))
             {
                 if (!is_surrounded_by_walls(data, i, j))
-                    printf("Map is not closed by walls");
+                {
+                    printf("Error\nMap is not closed by walls\n");
+                    return (0);
+                }
             }
             j++;
         }
@@ -108,15 +110,27 @@ int validate_data(t_data *data)
     // check all texture are present
     if (!data->textures.north || !data->textures.east ||
         !data->textures.south || !data->textures.west)
-        printf("Missing texture(s)");
+    {
+        printf("Error\nMissing texture(s)\n");
+        return (0);
+    }
     // Check colors are present
     if (data->colors.ceiling == -1)
-        printf("Missing ceiling color");
+    {
+        printf("Error\nMissing ceiling color\n");
+        return (0);
+    }
     if (data->colors.floor == -1)
-        printf("Missing floor color");
+    {
+        printf("Error\nMissing floor color\n");
+        return (0);
+    }
     // Check map exists
     if (!data->map.grid)
-        printf("Missing map");
+    {
+        printf("Error\nMissing map\n");
+        return (0);
+    }
     // Validate map structure
     if (!validate_map(data))
         return (0);

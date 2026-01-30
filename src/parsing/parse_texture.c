@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_texture.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: roubelka <roubelka@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/30 01:52:45 by roubelka          #+#    #+#             */
-/*   Updated: 2025/12/10 00:18:03 by roubelka         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "../../include/header.h"
 
@@ -16,23 +6,23 @@ static int  check_duplicate(t_data *data, char direction)
 {
     if (direction == 'N' && data->parsed_no)
     {
-        printf("Duplicate NO texture");
-        return (0); // yalh zidta mn chatgpt
+        printf("Error\nDuplicate NO texture\n");
+        return (0);
     }
     if (direction == 'S' && data->parsed_so)
     {
-        printf("Duplicate SO texture");
-        return (0); // yalh zidta mn chatgpt
+        printf("Error\nDuplicate SO texture\n");
+        return (0);
     }
     if (direction == 'W' && data->parsed_we)
     {
-        printf("Duplicate WE texture");
-        return (0); // yalh zidta mn chatgpt
+        printf("Error\nDuplicate WE texture\n");
+        return (0);
     }
     if (direction == 'E' && data->parsed_ea)
     {
-        printf("Duplicate EA texture");
-        return (0); // yalh zidta mn chatgpt
+        printf("Error\nDuplicate EA texture\n");
+        return (0);
     }
     return (1);
 }
@@ -76,25 +66,22 @@ int parse_texture(char *line, t_data *data, char direction)
         i++;
     if (!line[i])
     {
-        printf("Missing texture path");
-        return (0); // yalh zidta mn chatgpt
+        printf("Error\nMissing texture path\n");
+        return (0);
     }
     // check ach path shih
     trimmed = trim_line(&line[i]);
     if (!trimmed)
     {
-        printf("Memory allocation for texture path failed");
-        return (0); // yalh zidta mn chatgpt
+        printf("Error\nMemory allocation for texture path failed\n");
+        return (0);
     }
 
-    /* DEBUG — show what we try to open */
-    // ->// printf("[DBG] parse_texture dir=%c path='%s'\n", direction, trimmed);
-    
-    if (!check_file_exists(trimmed)) //rah kan flawl (line)
+    if (!check_file_exists(trimmed))
     {
-        printf("Texture file not found");
+        printf("Error\nTexture file not found\n");
         free(trimmed);
-        return (0); // yalh zidta mn chatgpt
+        return (0);
     }
     // Duplicate the path for storage
     path = ft_strdup(trimmed);

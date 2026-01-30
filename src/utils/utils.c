@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: roubelka <roubelka@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/29 19:51:04 by roubelka          #+#    #+#             */
-/*   Updated: 2025/12/07 23:37:44 by roubelka         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "../../include/header.h"
 
@@ -43,8 +33,8 @@ int open_file(char *filename)
     fd = open(filename, O_RDONLY);
     if (fd < 0)
     {
-        printf("Error\nCannot open file");
-        return (0);
+        printf("Error\nCannot open file\n");
+        return (-1);
     }
     return (fd);
 }

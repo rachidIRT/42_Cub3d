@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: roubelka <roubelka@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/06 18:35:17 by roubelka          #+#    #+#             */
-/*   Updated: 2025/12/08 19:30:16 by roubelka         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "../../include/header.h"
 
@@ -92,7 +82,8 @@ int parse_map_line(char *line, t_data   *data)
         !data->parsed_so || !data->parsed_we ||
         !data->parsed_c || !data->parsed_f)
     {
-        printf("Map must come after all elements");            
+        printf("Error\nMap must come after all elements\n");
+        return (0);
     }
     // Skip empty lines before map starts
     if (is_empty_line(line) && !data->map_lines)
@@ -109,14 +100,20 @@ int finalize_map(t_data *data)
     int         row;
     // Check we have map lines
     if (!data->map_lines)
-        printf("No map found");
+    {
+        printf("Error\nNo map found\n");
+        return (0);
+    }
     // Calculate map dimensions
     data->map.height = count_map_lines(data->map_lines);
     data->map.width = get_max_width(data->map_lines);
     // Allocate array of row pointers (+1 for NULL terminator)
-    data->map.grid = malloc(sizeof(char *) * (data->map.height + 1));
+    data->map.grid = ft_calloc(data->map.height + 1, sizeof(char *));
     if (!data->map.grid)
-        printf("Failed to allocate map grid");
+    {
+        printf("Error\nFailed to allocate map grid\n");
+        return (0);
+    }
     // Process each line from linked list
     current_line = data->map_lines;
     row = 0;
@@ -125,7 +122,10 @@ int finalize_map(t_data *data)
         // Allocate space for this row (+1 for '\0')
         data->map.grid[row] = malloc(data->map.width + 1);
         if (!data->map.grid[row])
-            printf("Failed to allocate map row");
+        {
+            printf("Error\nFailed to allocate map row\n");
+            return (0);
+        }
         
         // Copy line and pad with spaces to max_width
         copy_and_pad_line(data->map.grid[row], current_line->line, data->map.width);

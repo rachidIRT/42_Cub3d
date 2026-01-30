@@ -3,8 +3,8 @@ NAME        = cub3D
 # Compiler and flags
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -g
-INCLUDES    = -I./includes -I./libft -I./get_next_line
-LIBS        = -L./libft -lft -lm
+INCLUDES    = -I./includes -I./libft -I./get_next_line -I./mlx
+LIBS        = -L./libft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 # Directories
 SRC_DIR     = src
@@ -12,6 +12,7 @@ OBJ_DIR     = obj
 INC_DIR     = includes
 LIBFT_DIR   = libft
 GNL_DIR     = get_next_line
+MLX_DIR     = mlx
 
 # Source files
 SRCS        = $(SRC_DIR)/main.c \
@@ -23,7 +24,8 @@ SRCS        = $(SRC_DIR)/main.c \
               $(SRC_DIR)/validation/validate.c \
               $(SRC_DIR)/validation/validate_chars.c \
               $(SRC_DIR)/utils/utils.c \
-              $(SRC_DIR)/utils/string_utils.c
+              $(SRC_DIR)/utils/string_utils.c \
+              $(SRC_DIR)/textures/load_textures.c
 
 # GNL files
 GNL_SRCS    = $(GNL_DIR)/get_next_line.c \
@@ -37,6 +39,9 @@ ALL_OBJS    = $(OBJS) $(GNL_OBJS)
 
 # Libft
 LIBFT       = $(LIBFT_DIR)/libft.a
+
+# MLX
+MLX         = $(MLX_DIR)/libmlx.a
 
 # Colors for pretty output
 GREEN       = \033[0;32m
@@ -52,7 +57,7 @@ TOTAL       = $(words $(SRCS) $(GNL_SRCS))
 CURRENT     = 0
 
 # Rules
-all: header $(LIBFT) $(NAME) footer
+all: header $(LIBFT) $(MLX) $(NAME) footer
 
 header:
 	@echo "$(CYAN)"
@@ -81,6 +86,11 @@ $(LIBFT):
 	@echo "$(MAGENTA)📚 Building libft...$(RESET)"
 	@make -C $(LIBFT_DIR) --no-print-directory
 	@echo "$(GREEN)✓ libft ready!$(RESET)"
+
+$(MLX):
+	@echo "$(MAGENTA)📚 Building mlx...$(RESET)"
+	@make -C $(MLX_DIR) --no-print-directory 2>/dev/null
+	@echo "$(GREEN)✓ mlx ready!$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)

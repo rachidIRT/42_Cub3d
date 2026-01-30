@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse_file.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: roubelka <roubelka@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/07 20:04:16 by roubelka          #+#    #+#             */
-/*   Updated: 2025/12/09 22:24:41 by roubelka         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "../../include/header.h"
 
@@ -40,6 +30,10 @@ int parse_line(char *line, t_data *data)
 {
     char    *trimmed;
      
+    // If map already started, continue parsing map
+    if (data->map_started)
+        return (parse_map_line(line, data));
+
     trimmed = skip_spaces(line);
     // printf("ana hna\n");
     // Skip empty lines
@@ -50,20 +44,16 @@ int parse_line(char *line, t_data *data)
     if (parse_element(trimmed, data))
         return (1);
     
-    // If map already started, continue parsing map
-    if (data->map_started)
-        return (parse_map_line(trimmed, data));
-    
     // If all elements are parsed, map starts here
     if (data->parsed_no && data->parsed_so && data->parsed_we &&
         data->parsed_ea && data->parsed_f && data->parsed_c)
     {
         data->map_started = true;
-        return (parse_map_line(trimmed, data));
+        return (parse_map_line(line, data));
     }
     // Invalid line before all elements are parsed
-    printf("Invalid line in file");
-    return (1); // yalah modifito
+    // printf("Error\nInvalid line in file\n");
+    return (0);
 }
 
 static void trim_newline(char *str)
@@ -88,8 +78,10 @@ int parse_file(char *filename, t_data *data)
 
     // Check extension
     if (!check_file_ext(filename))
-        printf("Invalid file extension (.cub required)");
-        // exit(1);
+    {
+        printf("Error\nInvalid file extension (.cub required)\n");
+        return (0);
+    }
     
     // Open file
     fd = open_file(filename);
