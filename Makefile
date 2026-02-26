@@ -1,10 +1,21 @@
 NAME        = cub3D
+# Detect OS
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+    MLX_DIR = mlx/linux
+else
+    MLX_DIR = mlx/macOS
+endif
 
 # Compiler and flags
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -g
-INCLUDES    = -I./includes -I./libft -I./get_next_line -I./mlx
-LIBS        = -L./libft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
+INCLUDES    = -I./includes -I./libft -I./get_next_line -I$(MLX_DIR)
+ifeq ($(UNAME_S),Linux)
+    LIBS = -L./libft -lft -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
+else
+    LIBS = -L./libft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
+endif
 
 # Directories
 SRC_DIR     = src
@@ -12,7 +23,6 @@ OBJ_DIR     = obj
 INC_DIR     = includes
 LIBFT_DIR   = libft
 GNL_DIR     = get_next_line
-MLX_DIR     = mlx
 
 # Source files
 SRCS        = $(SRC_DIR)/main.c \
@@ -25,8 +35,18 @@ SRCS        = $(SRC_DIR)/main.c \
               $(SRC_DIR)/validation/validate_chars.c \
               $(SRC_DIR)/utils/utils.c \
               $(SRC_DIR)/utils/string_utils.c \
-              $(SRC_DIR)/textures/load_textures.c
-
+              $(SRC_DIR)/textures/load_textures.c \
+              $(SRC_DIR)/render/init_game.c \
+              $(SRC_DIR)/render/pixel.c \
+              $(SRC_DIR)/render/draw.c \
+              $(SRC_DIR)/render/raycasting.c \
+              $(SRC_DIR)/render/render_wall.c \
+              $(SRC_DIR)/render/render.c \
+              $(SRC_DIR)/events/events.c \
+              $(SRC_DIR)/events/movement.c \
+              $(SRC_DIR)/events/game_loop.c \
+			  $(SRC_DIR)/events/mouse.c
+			  
 # GNL files
 GNL_SRCS    = $(GNL_DIR)/get_next_line.c \
               $(GNL_DIR)/get_next_line_utils.c
