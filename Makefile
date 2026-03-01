@@ -46,7 +46,6 @@ SRCS        = $(SRC_DIR)/main.c \
               $(SRC_DIR)/events/events.c \
               $(SRC_DIR)/events/movement.c \
               $(SRC_DIR)/events/game_loop.c \
-			  $(SRC_DIR)/events/mouse.c
 			  
 # GNL files
 GNL_SRCS    = $(GNL_DIR)/get_next_line.c \

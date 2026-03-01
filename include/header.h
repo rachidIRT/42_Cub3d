@@ -31,7 +31,7 @@
 
 /* init_utils.c */
 t_data			*init_data(void);
-int             init_mlx(t_dat *data);
+int             init_mlx(t_data *data);
 
 /* free_utils.c */
 void			free_data(t_data *data);
@@ -89,7 +89,6 @@ void			free_textures(t_data *data);
 /* render/init_game.c */
 void			init_player_angle(t_data *data);
 int				init_window(t_data *data);
-int				init_mlx(t_data *data);
 
 /* render/pixel.c */
 void			put_pixel(t_img *img, int x, int y, int color);
@@ -133,6 +132,6 @@ void			handle_movement(t_data *data);
 int				game_loop(t_data *data);
 
 /* events/mouse.c */
-void			update_mouse(t_data *data);
+// void			update_mouse(t_data *data);
 
 # endif

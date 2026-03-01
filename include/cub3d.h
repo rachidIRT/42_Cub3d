@@ -6,7 +6,7 @@
 # define SCREEN_WIDTH	1280
 # define SCREEN_HEIGHT	720
 # define MOVE_SPEED		0.05
-# define ROT_SPEED		0.03
+# define ROT_SPEED		0.04
 # define MOUSE_SENS		0.001
 # define FOV_DEG		60
 # ifndef M_PI
