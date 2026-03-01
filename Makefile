@@ -26,7 +26,8 @@ GNL_DIR     = get_next_line
 
 # Source files
 SRCS        = $(SRC_DIR)/main.c \
-              $(SRC_DIR)/init.c \
+              $(SRC_DIR)/init_utils.c \
+			  $(SRC_DIR)/free_utils.c \
               $(SRC_DIR)/parsing/parse_file.c \
               $(SRC_DIR)/parsing/parse_texture.c \
               $(SRC_DIR)/parsing/parse_color.c \

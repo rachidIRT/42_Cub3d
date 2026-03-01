@@ -4,7 +4,7 @@
 
 void    add_map_line(t_data *data, char *line)
 {
-        t_map_line  *new;
+    t_map_line  *new;
     t_map_line  *current;
 
     new = malloc(sizeof(t_map_line));
@@ -12,7 +12,6 @@ void    add_map_line(t_data *data, char *line)
         return ;
     
     new->line = ft_strdup(line);
-    // new->line = line; // hada zidto ohaydto
     new->next = NULL;
     
     if (!data->map_lines)
@@ -68,7 +67,6 @@ static void copy_and_pad_line(char *dest, char *src, int max_width)
         dest[i] = src[i];
         i++;
     }
-    // idaft spase hta twsal max_width
     while(i < max_width)
     {
         dest[i] = ' ';

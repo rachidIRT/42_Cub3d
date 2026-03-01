@@ -4,14 +4,14 @@
 
 int check_file_ext(char *filename)
 {
-    int line;
+    int len;
 
     if (!filename)
         return (0);
-    line = ft_strlen(filename);
-    if (line < 5)
+    len = ft_strlen(filename);
+    if (len < 5)
         return (0);
-    if(ft_strncmp(filename + line - 4, ".cub", 4) != 0)
+    if(ft_strncmp(filename + len - 4, ".cub", 4) != 0)
         return (0);
     return (1);        
 }

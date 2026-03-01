@@ -30,7 +30,7 @@ static void	render_column(t_data *data, int x)
 	draw_wall_column(data, &ray, &r, x);
 }
 
-int	render_frame(t_data *data)
+void	render_frame(t_data *data)
 {
 	int	x;
 
@@ -42,6 +42,5 @@ int	render_frame(t_data *data)
 		x++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win,
-		data->frame.img, 0, 0);
-	return (0);
+							data->frame.img, 0, 0);
 }

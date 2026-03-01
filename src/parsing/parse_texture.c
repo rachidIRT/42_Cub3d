@@ -69,7 +69,6 @@ int parse_texture(char *line, t_data *data, char direction)
         printf("Error\nMissing texture path\n");
         return (0);
     }
-    // check ach path shih
     trimmed = trim_line(&line[i]);
     if (!trimmed)
     {
@@ -89,7 +88,7 @@ int parse_texture(char *line, t_data *data, char direction)
     if (!path)
     {
         printf("Failed to allocate memory");
-        return (0); // yalh zidta mn chatgpt
+        return (0);
     }
     // Store in appropriate field
     return (store_texture(data, path, direction));

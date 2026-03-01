@@ -46,6 +46,8 @@ int	main(int ac, char **av)
 		return (printf("Error\nFailed to initialize data\n"), 1);
 	if (!parse_file(av[1], data))
 		return (free_data(data), 1);
+	if (!init_mlx(data))
+		return (free_data(data), 1);
 	if (!load_textures(data))
 		return (free_data(data), 1);
 	if (!init_game(data))

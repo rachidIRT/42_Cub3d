@@ -71,15 +71,6 @@ void	free_textures(t_data *data)
  */
 int	load_textures(t_data *data)
 {
-	if (!data->mlx)
-	{
-		data->mlx = mlx_init();
-		if (!data->mlx)
-		{
-			printf("Error\nFailed to initialize mlx\n");
-			return (0);
-		}
-	}
 	if (!load_single_texture(data, data->textures.north,
 			&data->textures.north_img))
 		return (0);

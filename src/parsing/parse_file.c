@@ -35,7 +35,6 @@ int parse_line(char *line, t_data *data)
         return (parse_map_line(line, data));
 
     trimmed = skip_spaces(line);
-    // printf("ana hna\n");
     // Skip empty lines
     if (is_empty_line(trimmed))
         return (1);
@@ -51,8 +50,6 @@ int parse_line(char *line, t_data *data)
         data->map_started = true;
         return (parse_map_line(line, data));
     }
-    // Invalid line before all elements are parsed
-    // printf("Error\nInvalid line in file\n");
     return (0);
 }
 
