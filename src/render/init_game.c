@@ -28,6 +28,5 @@ int	init_window(t_data *data)
 		return (0);
 	data->frame.width = SCREEN_WIDTH;
 	data->frame.height = SCREEN_HEIGHT;
-	// mlx_mouse_hide(data->mlx, data->win);
 	return (1);
 }

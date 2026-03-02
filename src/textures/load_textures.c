@@ -1,11 +1,5 @@
-
-
 #include "../../include/header.h"
 
-/**
- * Load a single texture from an XPM file into a t_img structure
- * Returns 1 on success, 0 on failure
- */
 int	load_single_texture(t_data *data, char *path, t_img *img)
 {
 	img->img = mlx_xpm_file_to_image(data->mlx, path,
@@ -27,9 +21,6 @@ int	load_single_texture(t_data *data, char *path, t_img *img)
 	return (1);
 }
 
-/**
- * Free a single texture image
- */
 static void	free_single_texture(t_data *data, t_img *img)
 {
 	if (img->img && data->mlx)
@@ -40,9 +31,6 @@ static void	free_single_texture(t_data *data, t_img *img)
 	}
 }
 
-/**
- * Free all loaded textures
- */
 void	free_textures(t_data *data)
 {
 	if (!data)
@@ -65,10 +53,6 @@ void	free_textures(t_data *data)
 	data->textures.west = NULL;
 }
 
-/**
- * Load all four wall textures
- * Returns 1 on success, 0 on failure
- */
 int	load_textures(t_data *data)
 {
 	if (!load_single_texture(data, data->textures.north,

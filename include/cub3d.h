@@ -1,7 +1,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <stdbool.h> 
+# include <stdbool.h>
 
 # define SCREEN_WIDTH	1280
 # define SCREEN_HEIGHT	720
@@ -113,6 +113,5 @@ typedef struct s_data
 	bool		map_started;
 	char		keys[512];
 }	t_data;
-
 
 # endif

@@ -31,7 +31,9 @@ SRCS        = $(SRC_DIR)/main.c \
               $(SRC_DIR)/parsing/parse_file.c \
               $(SRC_DIR)/parsing/parse_texture.c \
               $(SRC_DIR)/parsing/parse_color.c \
+              $(SRC_DIR)/parsing/parse_color_utils.c \
               $(SRC_DIR)/parsing/parse_map.c \
+              $(SRC_DIR)/parsing/parse_map_utils.c \
               $(SRC_DIR)/validation/validate.c \
               $(SRC_DIR)/validation/validate_chars.c \
               $(SRC_DIR)/utils/utils.c \
@@ -45,7 +47,7 @@ SRCS        = $(SRC_DIR)/main.c \
               $(SRC_DIR)/render/render.c \
               $(SRC_DIR)/events/events.c \
               $(SRC_DIR)/events/movement.c \
-              $(SRC_DIR)/events/game_loop.c \
+              $(SRC_DIR)/events/game_loop.c 
 			  
 # GNL files
 GNL_SRCS    = $(GNL_DIR)/get_next_line.c \

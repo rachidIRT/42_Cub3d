@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: roubelka <roubelka@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 15:25:06 by roubelka          #+#    #+#             */
-/*   Updated: 2025/12/17 15:25:07 by roubelka         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef HEADER_H
 # define HEADER_H
 
@@ -31,7 +19,7 @@
 
 /* init_utils.c */
 t_data			*init_data(void);
-int             init_mlx(t_data *data);
+int				init_mlx(t_data *data);
 
 /* free_utils.c */
 void			free_data(t_data *data);
@@ -51,12 +39,21 @@ int				parse_color(char *line, t_data *data, char type);
 int				parse_rgb(char *str, int *r, int *g, int *b);
 int				rgb_to_int(int r, int g, int b);
 
+/* parsing/parse_color_utils.c */
+int				check_comma_count(char *str);
+int				check_valid_chars(char *str);
+int				validate_rgb(int r, int g, int b);
+
 /* parsing/parse_map.c */
 int				parse_map_line(char *line, t_data *data);
 int				finalize_map(t_data *data);
 void			add_map_line(t_data *data, char *line);
+
+/* parsing/parse_map_utils.c */
 int				count_map_lines(t_map_line *head);
 int				get_max_width(t_map_line *head);
+void			copy_and_pad_line(char *dest, char *src, int max_width);
+int				fill_grid_rows(t_data *data);
 
 /* validation/validate.c */
 int				validate_data(t_data *data);
@@ -130,8 +127,5 @@ void			rotate_left(t_data *data);
 void			rotate_right(t_data *data);
 void			handle_movement(t_data *data);
 int				game_loop(t_data *data);
-
-/* events/mouse.c */
-// void			update_mouse(t_data *data);
 
 # endif

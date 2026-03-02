@@ -32,7 +32,6 @@ void	handle_movement(t_data *data)
 
 int	game_loop(t_data *data)
 {
-	// update_mouse(data);
 	handle_movement(data);
 	render_frame(data);
 	return (0);

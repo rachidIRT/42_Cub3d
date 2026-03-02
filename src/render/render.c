@@ -42,5 +42,5 @@ void	render_frame(t_data *data)
 		x++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win,
-							data->frame.img, 0, 0);
+		data->frame.img, 0, 0);
 }

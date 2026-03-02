@@ -1,40 +1,39 @@
-
-
 #include "../../include/header.h"
 
-int check_file_ext(char *filename)
+int	check_file_ext(char *filename)
 {
-    int len;
+	int	len;
 
-    if (!filename)
-        return (0);
-    len = ft_strlen(filename);
-    if (len < 5)
-        return (0);
-    if(ft_strncmp(filename + len - 4, ".cub", 4) != 0)
-        return (0);
-    return (1);        
-}
-int check_file_exists(char *path)
-{
-    int fd;
-
-    fd = open(path, O_RDONLY);
-    if (fd < 0)
-        return (0);
-    close(fd);
-    return (1);
+	if (!filename)
+		return (0);
+	len = ft_strlen(filename);
+	if (len < 5)
+		return (0);
+	if (ft_strncmp(filename + len - 4, ".cub", 4) != 0)
+		return (0);
+	return (1);
 }
 
-int open_file(char *filename)
+int	check_file_exists(char *path)
 {
-    int fd;
+	int	fd;
 
-    fd = open(filename, O_RDONLY);
-    if (fd < 0)
-    {
-        printf("Error\nCannot open file\n");
-        return (-1);
-    }
-    return (fd);
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		return (0);
+	close(fd);
+	return (1);
+}
+
+int	open_file(char *filename)
+{
+	int	fd;
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+	{
+		printf("Error\nCannot open file\n");
+		return (-1);
+	}
+	return (fd);
 }
