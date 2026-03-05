@@ -9,7 +9,7 @@ endif
 
 # Compiler and flags
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g
+CFLAGS      = -Wall -Wextra -Werror -g -std=gnu17
 INCLUDES    = -I./includes -I./libft -I./get_next_line -I$(MLX_DIR)
 ifeq ($(UNAME_S),Linux)
     LIBS = -L./libft -lft -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   header.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rachid <rachid@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/05 02:31:33 by rachid            #+#    #+#             */
+/*   Updated: 2026/03/05 02:32:21 by rachid           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HEADER_H
 # define HEADER_H
 
@@ -128,4 +140,4 @@ void			rotate_right(t_data *data);
 void			handle_movement(t_data *data);
 int				game_loop(t_data *data);
 
-# endif
+#endif
