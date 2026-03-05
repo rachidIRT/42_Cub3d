@@ -14,7 +14,7 @@ INCLUDES    = -I./includes -I./libft -I./get_next_line -I$(MLX_DIR)
 ifeq ($(UNAME_S),Linux)
     LIBS = -L./libft -lft -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
 else
-    LIBS = -L./libft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
+    LIBS = -L./libft -lft -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 endif
 
 # Directories

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game_loop.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: roubelka <roubelka@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/05 17:02:52 by roubelka          #+#    #+#             */
+/*   Updated: 2026/03/05 17:02:53 by roubelka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
 
 void	rotate_left(t_data *data)
@@ -16,17 +28,17 @@ void	rotate_right(t_data *data)
 
 void	handle_movement(t_data *data)
 {
-	if (data->keys[119 % 512])
+	if (data->keys[KEY_W])
 		move_forward(data);
-	if (data->keys[115 % 512])
+	if (data->keys[KEY_S])
 		move_backward(data);
-	if (data->keys[97 % 512])
+	if (data->keys[KEY_A])
 		strafe_left(data);
-	if (data->keys[100 % 512])
+	if (data->keys[KEY_D])
 		strafe_right(data);
-	if (data->keys[65361 % 512])
+	if (data->keys[KEY_LEFT])
 		rotate_left(data);
-	if (data->keys[65363 % 512])
+	if (data->keys[KEY_RIGHT])
 		rotate_right(data);
 }
 

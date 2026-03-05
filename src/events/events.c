@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   events.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: roubelka <roubelka@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/05 17:02:49 by roubelka          #+#    #+#             */
+/*   Updated: 2026/03/05 17:02:50 by roubelka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
 
 static void	set_key(t_data *data, int keycode, char val)
 {
-	if (keycode == 119 || keycode == 115
-		|| keycode == 97 || keycode == 100)
-		data->keys[keycode % 512] = val;
-	if (keycode == 65361 || keycode == 65363)
-		data->keys[keycode % 512] = val;
+	if (keycode == KEY_W || keycode == KEY_S
+		|| keycode == KEY_A || keycode == KEY_D)
+		data->keys[keycode] = val;
+	if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
+		data->keys[keycode] = val;
 }
 
 int	key_press(int keycode, t_data *data)
 {
-	if (keycode == 65307)
+	if (keycode == KEY_ESC)
 		close_game(data);
 	set_key(data, keycode, 1);
 	return (0);

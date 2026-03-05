@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   header.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: roubelka <roubelka@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/05 17:06:09 by roubelka          #+#    #+#             */
+/*   Updated: 2026/03/05 17:06:28 by roubelka         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HEADER_H
 # define HEADER_H
 
@@ -14,7 +26,7 @@
 # ifdef __linux__
 #  include "../mlx/linux/mlx.h"
 # else
-#  include "../mlx/macos/mlx.h"
+#  include "../mlx/macOS/mlx.h"
 # endif
 
 /* init_utils.c */
@@ -128,4 +140,4 @@ void			rotate_right(t_data *data);
 void			handle_movement(t_data *data);
 int				game_loop(t_data *data);
 
-# endif
+#endif
