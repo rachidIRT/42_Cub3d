@@ -67,7 +67,6 @@ typedef struct s_player
 	double	pos_y;
 	char	direction;
 	double	ang;
-	double	mouse_last_x;
 }	t_player;
 
 typedef struct s_map

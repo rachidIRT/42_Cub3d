@@ -4,13 +4,13 @@ MLX_DIR = mlx/macOS
 # Compiler and flags
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror
-INCLUDES    = -I./includes -I./libft -I./get_next_line -I$(MLX_DIR)
+INCLUDES    = -I./include -I./libft -I./get_next_line -I$(MLX_DIR)
 LIBS = -L./libft -lft -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 # Directories
 SRC_DIR     = src
 OBJ_DIR     = obj
-INC_DIR     = includes
+INC_DIR     = include
 LIBFT_DIR   = libft
 GNL_DIR     = get_next_line
 
