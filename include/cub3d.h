@@ -6,7 +6,7 @@
 /*   By: roubelka <roubelka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 17:06:13 by roubelka          #+#    #+#             */
-/*   Updated: 2026/03/05 17:06:20 by roubelka         ###   ########.fr       */
+/*   Updated: 2026/03/05 23:33:56 by roubelka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,18 @@
 # define SCREEN_HEIGHT	720
 # define MOVE_SPEED		0.05
 # define ROT_SPEED		0.04
-# define MOUSE_SENS		0.001
 # define FOV_DEG		60
 # ifndef M_PI
 #  define M_PI			3.14159265358979323846
 # endif
 
-# ifdef __linux__
-#  define KEY_W       119
-#  define KEY_A       97
-#  define KEY_S       115
-#  define KEY_D       100
-#  define KEY_LEFT    65361
-#  define KEY_RIGHT   65363
-#  define KEY_ESC     65307
-# else
-#  define KEY_W       13
-#  define KEY_A       0
-#  define KEY_S       1
-#  define KEY_D       2
-#  define KEY_LEFT    123
-#  define KEY_RIGHT   124
-#  define KEY_ESC     53
-# endif
+# define KEY_W       	13
+# define KEY_A       	0
+# define KEY_S       	1
+# define KEY_D       	2
+# define KEY_LEFT    	123
+# define KEY_RIGHT   	124
+# define KEY_ESC     	53
 
 typedef struct s_img
 {

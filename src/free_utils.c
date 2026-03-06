@@ -6,7 +6,7 @@
 /*   By: roubelka <roubelka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 16:56:34 by roubelka          #+#    #+#             */
-/*   Updated: 2026/03/05 16:56:35 by roubelka         ###   ########.fr       */
+/*   Updated: 2026/03/05 23:30:51 by roubelka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,5 @@ void	free_data(t_data *data)
 		mlx_destroy_image(data->mlx, data->frame.img);
 	if (data->win && data->mlx)
 		mlx_destroy_window(data->mlx, data->win);
-	if (data->mlx)
-		free(data->mlx);
 	free(data);
 }

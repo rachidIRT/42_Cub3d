@@ -6,7 +6,7 @@
 /*   By: roubelka <roubelka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/05 17:06:09 by roubelka          #+#    #+#             */
-/*   Updated: 2026/03/05 17:06:28 by roubelka         ###   ########.fr       */
+/*   Updated: 2026/03/05 23:08:38 by roubelka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,7 @@
 # include <math.h>
 # include "../libft/libft.h"
 # include "../get_next_line/get_next_line.h"
-
-# ifdef __linux__
-#  include "../mlx/linux/mlx.h"
-# else
-#  include "../mlx/macOS/mlx.h"
-# endif
+# include "../mlx/macOS/mlx.h"
 
 /* init_utils.c */
 t_data			*init_data(void);

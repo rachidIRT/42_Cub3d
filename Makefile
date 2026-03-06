@@ -1,21 +1,11 @@
 NAME        = cub3D
-# Detect OS
-UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S),Linux)
-    MLX_DIR = mlx/linux
-else
-    MLX_DIR = mlx/macOS
-endif
+MLX_DIR = mlx/macOS
 
 # Compiler and flags
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g
+CFLAGS      = -Wall -Wextra -Werror
 INCLUDES    = -I./includes -I./libft -I./get_next_line -I$(MLX_DIR)
-ifeq ($(UNAME_S),Linux)
-    LIBS = -L./libft -lft -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
-else
-    LIBS = -L./libft -lft -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
-endif
+LIBS = -L./libft -lft -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 # Directories
 SRC_DIR     = src
@@ -142,29 +132,4 @@ fclean: clean
 
 re: fclean all
 
-# Test with a valid map
-test: $(NAME)
-	@echo "$(YELLOW)🧪 Running test...$(RESET)"
-	@./$(NAME) maps/test.cub
-
-# Memory leak check with valgrind
-leaks: $(NAME)
-	@echo "$(YELLOW)🔍 Checking for memory leaks...$(RESET)"
-	@valgrind --leak-check=full \
-	          --show-leak-kinds=all \
-	          --track-origins=yes \
-	          --verbose \
-	          --log-file=valgrind-out.txt \
-	          ./$(NAME) maps/test.cub
-	@echo "$(GREEN)✓ Check complete! See valgrind-out.txt$(RESET)"
-
-# Debug build with sanitizers
-debug: CFLAGS += -g3 -fsanitize=address -fsanitize=undefined
-debug: re
-	@echo "$(MAGENTA)🐛 Debug build complete with sanitizers!$(RESET)"
-
-# Show compilation database (useful for LSP)
-bear: fclean
-	@bear -- make
-
-.PHONY: all clean fclean re test leaks debug bear header footer
+.PHONY: all clean fclean re header footer
